@@ -51,8 +51,9 @@ public class Adapter {
     public List<Infor> queryAll(String tiaojian){
         List<Infor>list=new ArrayList<Infor>();
         openDB();
-        Cursor cursor=db.query("information",new String[]{"number","name","zuozhe","chubanshe"},"number = ? or name = ? or zuozhe = ? or chubanshe = ?",new String[]{tiaojian},null, null,null);
-        if (cursor.getCount() > 0){
+        //Cursor cursor=db.query("information",new String[]{"number","name","zuozhe","chubanshe"},"number = ? or name = ? or zuozhe = ? or chubanshe = ?",new String[]{tiaojian},null, null,null);
+            Cursor cursor=db.query("information",null,null,null,null, null,null);
+            if (cursor.getCount() > 0){
             if (cursor.moveToFirst()){
                 do {
                     long number=cursor.getLong(cursor.getColumnIndex("number"));
