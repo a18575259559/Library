@@ -30,10 +30,9 @@ public class ChaxunActivity extends AppCompatActivity {
         final EditText edt_tiaojian = findViewById(R.id.edt_cx_tiaojian);
 
 
-        findViewById(R.id.btn_cx_shanchu).setOnClickListener(new View.OnClickListener() {//删除
+        findViewById(R.id.btn_cx_shanchu).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //根据姓名，删除数据库表里的记录，1，2,3，。。。
                 String name=edttiaojian.getText().toString().trim();
                 String number=edttiaojian.getText().toString().trim();
                 Adapter adapter=new Adapter(getApplicationContext());
@@ -50,8 +49,8 @@ public class ChaxunActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String tiaojian = edt_tiaojian.getText().toString().trim();
                 Adapter adapter = new Adapter(getApplicationContext());
-                adapter.queryAll(tiaojian);
-                lvdisplay.setAdapter(new MyAdpater());;
+                List<Infor> infors = adapter.queryAll(tiaojian);
+                lvdisplay.setAdapter(new MyAdpater(infors));
 
             }
         });
@@ -73,6 +72,11 @@ public class ChaxunActivity extends AppCompatActivity {
 
 
     class MyAdpater extends BaseAdapter {
+        List<Infor> list;
+
+        public MyAdpater(List<Infor> infors) {
+            this.list = infors;
+        }
 
         @Override
         public int getCount() {
