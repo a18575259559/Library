@@ -1,5 +1,6 @@
 package com.example.stu.library;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class TJshujiActivity extends AppCompatActivity {
     EditText edtTxtnumber,edtTxtname,edtTxtzuozhe,edtTxtchubanshe;
@@ -24,7 +26,11 @@ public class TJshujiActivity extends AppCompatActivity {
         findViewById(R.id.btn_TJ_tianjia).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Long number=Long.valueOf(edtTxtnumber.getText().toString().trim());
+                Long number = null;
+               if (edtTxtnumber.getText().toString().length()>0){
+                  number=Long.valueOf(edtTxtnumber.getText().toString().trim());
+               }
+
                 String name=edtTxtname.getText().toString().trim();
                 String zuozhe=edtTxtzuozhe.getText().toString().trim();
                 String chubanshe=edtTxtchubanshe.getText().toString().trim();
